@@ -1,0 +1,397 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial;
+    background: #000;
+    color: #fff;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Vidéo d'arrière-plan */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.4) blur(3px); /* Assombrit et floute légèrement */
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(212, 0, 0, 0.2) 50%,
+        rgba(0, 0, 0, 0.8) 100%
+    );
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8); /* Header semi-transparent */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid #D40000;
+    backdrop-filter: blur(5px); /* Effet de flou derrière le header */
+}
+
+.logo {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+    padding: 8px 15px;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+nav a:hover {
+    background: #D40000;
+    color: #000;
+}
+
+/* Hero section avec meilleure incrustation */
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+    padding-top: 80px;
+    position: relative;
+    background: transparent;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 50px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 70px;
+    margin-bottom: 20px;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.hero-content p {
+    color: #D40000;
+    font-size: 24px;
+    margin-bottom: 40px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.hero-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    border: 3px solid #D40000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+/* Stats du ney */
+.stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.stat {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 15px;
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(212, 0, 0, 0.3);
+}
+
+.number {
+    display: block;
+    font-size: 28px;
+    font-weight: bold;
+    color: #D40000;
+    margin-bottom: 5px;
+}
+
+.label {
+    font-size: 14px;
+    color: #ccc;
+    font-weight: bold;
+}
+
+/* Flèche découvrir cliquable */
+.explorer {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 2;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.explorer-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.explorer:hover {
+    transform: translateX(-50%) translateY(-5px);
+}
+
+.explorer span {
+    display: block;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    transition: color 0.3s ease;
+}
+
+.explorer:hover span {
+    color: #D40000;
+}
+
+.arrow {
+    width: 1px;
+    height: 40px;
+    background: #fff;
+    margin: 0 auto;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.explorer:hover .arrow {
+    background: #D40000;
+    height: 50px;
+}
+
+.arrow::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    transform: translateX(-50%) rotate(45deg);
+    transition: all 0.3s ease;
+}
+
+.explorer:hover .arrow::after {
+    border-color: #D40000;
+    width: 10px;
+    height: 10px;
+}
+
+/* Sections avec meilleure lisibilité */
+.highlights {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 80px 20px;
+    background: rgba(17, 17, 17, 0.9);
+    position: relative;
+    z-index: 2;
+    backdrop-filter: blur(5px);
+}
+
+.highlight-card {
+    background: rgba(34, 34, 34, 0.8);
+    padding: 40px 30px;
+    text-align: center;
+    border-radius: 10px;
+    border: 2px solid #333;
+    transition: all 0.3s;
+    backdrop-filter: blur(5px);
+}
+
+.highlight-card:hover {
+    border-color: #D40000;
+    transform: translateY(-5px);
+    background: rgba(34, 34, 34, 0.9);
+}
+
+.highlight-card h3 {
+    color: #D40000;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.highlight-card p {
+    color: #ccc;
+    font-size: 16px;
+}
+
+/* Cartes */
+.cards {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    background: rgba(0, 0, 0, 0.8);
+    position: relative;
+    z-index: 2;
+    backdrop-filter: blur(5px);
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    background: rgba(17, 17, 17, 0.8);
+    padding: 35px 30px;
+    text-decoration: none;
+    color: #fff;
+    margin-bottom: 2px;
+    border: 2px solid #222;
+    transition: all 0.3s;
+    backdrop-filter: blur(5px);
+}
+
+.card:hover {
+    background: rgba(26, 26, 26, 0.9);
+    border-color: #D40000;
+    transform: translateX(10px);
+}
+
+.number {
+    color: #D40000;
+    margin-right: 30px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.text h3 {
+    margin-bottom: 8px;
+    font-size: 22px;
+    color: #fff;
+}
+
+.text p {
+    color: #999;
+    font-size: 14px;
+}
+
+.card .arrow {
+    margin-left: auto;
+    background: none;
+    color: #666;
+    transition: all 0.3s;
+    font-size: 24px;
+}
+
+.card:hover .arrow {
+    color: #D40000;
+    transform: translateX(5px);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 50px 20px;
+    border-top: 1px solid #333;
+    background: rgba(0, 0, 0, 0.9);
+    position: relative;
+    z-index: 2;
+    backdrop-filter: blur(5px);
+}
+
+footer p {
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+footer a {
+    color: #D40000;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #fff;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .hero {
+        grid-template-columns: 1fr;
+        height: auto;
+        padding: 120px 20px 50px;
+    }
+    
+    .hero-content h1 {
+        font-size: 40px;
+    }
+    
+    .stats {
+        gap: 20px;
+    }
+    
+    .highlights {
+        flex-direction: column;
+    }
+    
+    .card {
+        padding: 25px 20px;
+    }
+
+    .background-video {
+        filter: brightness(0.3) blur(5px); /* Plus flou sur mobile */
+    }
+}
