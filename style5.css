@@ -1,0 +1,232 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #000;
+    color: #fff;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #000;
+    border-bottom: 2px solid #ff0000;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 15px;
+    padding: 5px 10px;
+}
+
+nav a:hover {
+    color: #ff0000;
+}
+
+/* Principal */
+.galerie-principal {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    flex: 1;
+    width: 100%;
+}
+
+/* NEY */
+.ney-galerie {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 60px 20px;
+}
+
+.ney-galerie h1 {
+    color: #ff0000;
+    font-size: 48px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.ney-galerie p {
+    color: #ccc;
+    font-size: 18px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* GRILLE */
+.galerie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 0 20px;
+}
+
+.photo-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #1a1a1a;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    aspect-ratio: 3/4;
+}
+
+.photo-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(255, 0, 0, 0.3);
+}
+
+.photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.photo-card:hover img {
+    transform: scale(1.05);
+}
+
+.photo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0, 0, 0, 0.1) 30%,
+        rgba(0, 0, 0, 0.8) 100%
+    );
+    display: flex;
+    align-items: flex-end;
+    padding: 25px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.photo-card:hover .photo-overlay {
+    opacity: 1;
+}
+
+.photo-info h3 {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 8px;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.photo-info p {
+    color: #ccc;
+    font-size: 14px;
+    transform: translateY(20px);
+    transition: transform 0.3s ease 0.1s;
+}
+
+.photo-card:hover .photo-info h3,
+.photo-card:hover .photo-info p {
+    transform: translateY(0);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 50px 20px;
+    border-top: 1px solid #333;
+    background: #000;
+    margin-top: auto;
+}
+
+footer p {
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+footer a {
+    color: #D40000;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .galerie-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    nav a {
+        margin: 0 8px;
+        font-size: 14px;
+    }
+
+    .ney-galerie h1 {
+        font-size: 36px;
+    }
+
+    .galerie-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .galerie-principal {
+        padding: 20px 15px;
+    }
+
+    .photo-overlay {
+        padding: 20px;
+        opacity: 1;
+        background: linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(0, 0, 0, 0.6) 100%
+        );
+    }
+
+    .photo-info h3,
+    .photo-info p {
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 480px) {
+    .galerie-grid {
+        grid-template-columns: 1fr;
+    }
+}
